@@ -11,7 +11,7 @@ const createHash = (payload, isString = false) => {
 exports.deterministicPartitionKey = (event) => {
   if (!event) return "0"; // if there is no event return default value
   // if already partitionKey exists return it, else hash the object and return the value
-  return event?.partitionKey || createHash(event);
+  return JSON.stringify(event?.partitionKey) || createHash(event);
 };
 
 
